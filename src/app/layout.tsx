@@ -22,7 +22,7 @@ export default function RootLayout({
 
   const {dir} = useLangStore();
   return (
-    <html lang="en" dir="dir">
+    <html lang="en" dir={dir}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
