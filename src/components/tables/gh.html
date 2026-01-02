@@ -1,395 +1,472 @@
 <!DOCTYPE html>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>EduTrack Pro - Student Management</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#135bec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101622",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EduTrack Pro - Add Student</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "primary-hover": "#1d4ed8",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1f2937",
+              "text-main-light": "#0d121b",
+              "text-main-dark": "#f9fafb",
+              "text-secondary-light": "#4c669a",
+              "text-secondary-dark": "#9ca3af",
+              "border-light": "#e5e7eb",
+              "border-dark": "#374151",
             },
-        }
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
-<style>
-        /* Custom scrollbar for better aesthetic */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .icon-filled {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .material-symbols-fill {
+        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
     </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-hidden">
-<div class="flex h-screen w-full">
-<!-- Sidebar -->
-<aside class="w-64 flex-shrink-0 bg-white dark:bg-[#1a202c] border-r border-slate-200 dark:border-slate-800 flex flex-col h-full transition-all duration-300">
-<div class="p-6">
-<div class="flex flex-col gap-1 mb-8">
-<h1 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">EduTrack Pro</h1>
-<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Admin Portal</p>
-</div>
-<nav class="flex flex-col gap-2">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">dashboard</span>
-<span class="text-sm font-medium">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary dark:text-blue-400 group" href="#">
-<span class="material-symbols-outlined icon-filled">school</span>
-<span class="text-sm font-semibold">Students</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">person_apron</span>
-<span class="text-sm font-medium">Teachers</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">class</span>
-<span class="text-sm font-medium">Classes</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">settings</span>
-<span class="text-sm font-medium">Settings</span>
-</a>
-</nav>
-</div>
-<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden relative">
-<img class="w-full h-full object-cover" data-alt="Admin User Profile Picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6D90D0ODd0KhuAGQPo2UDhcbocUZyhtiFB75A6yiNEvZPrQAufL6KAhE4UMojxReO4v3EMZjA1BEXFlVxWng-fOz7wk8YQ2ilHM5zq10ncMB8-_Fnjui12ZljStXKCBpDI_TEvpoZ7AyFiJTVI_CS-XVYqIIqlUvKixfZGD7ERgMBiSpjzGx6D8DEdPWcZX3OMiSuhltel-rqzixqVO_2zohZ6KLzlOoHD__YiEXa8ZC2iMdTNi9TF3ubzu6NyIdbFovv-poPZt8"/>
-</div>
-<div class="flex flex-col">
-<p class="text-sm font-semibold text-slate-900 dark:text-white">Admin User</p>
-<p class="text-xs text-slate-500 dark:text-slate-400">School Principal</p>
-</div>
-</div>
-</div>
-</aside>
-<!-- Main Content -->
-<main class="flex-1 flex flex-col h-full overflow-hidden relative">
-<!-- Top Header -->
-<header class="w-full bg-white/50 dark:bg-[#1a202c]/50 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
-<div class="max-w-7xl mx-auto px-6 py-5">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div>
-<h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Student Management</h2>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage student records, classes, and enrollments.</p>
-</div>
-<button class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all shadow-sm shadow-blue-500/20 active:scale-95">
-<span class="material-symbols-outlined text-[20px]">add</span>
-                            Add Student
-                        </button>
-</div>
-</div>
-</header>
-<!-- Scrollable Content -->
-<div class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6">
-<div class="max-w-7xl mx-auto flex flex-col gap-6">
-<!-- Controls Bar -->
-<div class="bg-white dark:bg-[#1a202c] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
-<!-- Search -->
-<div class="relative w-full md:max-w-md">
-<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-<span class="material-symbols-outlined text-[20px]">search</span>
-</span>
-<input class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20 focus:bg-white dark:focus:bg-slate-900 transition-all" placeholder="Search by name, ID, or parent contact..." type="text"/>
-</div>
-<!-- Filters -->
-<div class="flex items-center gap-3 w-full md:w-auto">
-<div class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm font-medium whitespace-nowrap">
-<span class="material-symbols-outlined text-[20px]">filter_list</span>
-                                Filter by:
-                            </div>
-<select class="form-select bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 py-2.5 pl-4 pr-10 cursor-pointer min-w-[160px]">
-<option value="">All Classes</option>
-<option value="12">Grade 12</option>
-<option value="11">Grade 11</option>
-<option value="10">Grade 10</option>
-<option value="9">Grade 9</option>
-</select>
-</div>
-</div>
-<!-- Table Section -->
-<div class="bg-white dark:bg-[#1a202c] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
-<tr>
-<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Arabic Name</th>
-<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">English Name</th>
-<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Class</th>
-<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Section</th>
-<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
-<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Actions</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white text-right font-display" dir="rtl">محمد علي</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary flex items-center justify-center text-xs font-bold">MA</div>
-<div class="flex flex-col">
-<span class="text-sm font-medium text-slate-900 dark:text-white">Mohammed Ali</span>
-<span class="text-xs text-slate-500">ID: 2023001</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Grade 10</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                                                Section A
-                                            </span>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                                Active
-                                            </span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-primary transition-colors" title="Edit Student">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-400 hover:text-red-600 transition-colors" title="Delete Student">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white text-right font-display" dir="rtl">سارة أحمد</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center text-xs font-bold">SA</div>
-<div class="flex flex-col">
-<span class="text-sm font-medium text-slate-900 dark:text-white">Sara Ahmed</span>
-<span class="text-xs text-slate-500">ID: 2023002</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Grade 10</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                                                Section B
-                                            </span>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                                Active
-                                            </span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-primary transition-colors" title="Edit Student">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-400 hover:text-red-600 transition-colors" title="Delete Student">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white text-right font-display" dir="rtl">يوسف حسن</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center text-xs font-bold">YH</div>
-<div class="flex flex-col">
-<span class="text-sm font-medium text-slate-900 dark:text-white">Yousef Hassan</span>
-<span class="text-xs text-slate-500">ID: 2023015</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Grade 11</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                                                Section A
-                                            </span>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                                                Absent
-                                            </span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-primary transition-colors" title="Edit Student">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-400 hover:text-red-600 transition-colors" title="Delete Student">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white text-right font-display" dir="rtl">ليلى محمود</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 flex items-center justify-center text-xs font-bold">LM</div>
-<div class="flex flex-col">
-<span class="text-sm font-medium text-slate-900 dark:text-white">Laila Mahmoud</span>
-<span class="text-xs text-slate-500">ID: 2023022</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Grade 9</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                                                Section C
-                                            </span>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                                Active
-                                            </span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-primary transition-colors" title="Edit Student">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-400 hover:text-red-600 transition-colors" title="Delete Student">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white text-right font-display" dir="rtl">عمر خالد</td>
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 flex items-center justify-center text-xs font-bold">OK</div>
-<div class="flex flex-col">
-<span class="text-sm font-medium text-slate-900 dark:text-white">Omar Khaled</span>
-<span class="text-xs text-slate-500">ID: 2023045</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Grade 12</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                                                Section B
-                                            </span>
-</td>
-<td class="px-6 py-4">
-<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
-<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                                                Suspended
-                                            </span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-primary transition-colors" title="Edit Student">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-400 hover:text-red-600 transition-colors" title="Delete Student">
-<span class="material-symbols-outlined text-[20px]">delete</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="bg-white dark:bg-[#1a202c] px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-<span>Rows per page:</span>
-<select class="form-select border-none bg-slate-50 dark:bg-slate-800 rounded text-xs py-1 pl-2 pr-6 focus:ring-0 cursor-pointer">
-<option>10</option>
-<option>20</option>
-<option>50</option>
-</select>
-</div>
-<div class="flex items-center gap-4">
-<span class="text-sm text-slate-500 dark:text-slate-400">
-<span class="font-medium text-slate-900 dark:text-white">1-5</span> of <span class="font-medium text-slate-900 dark:text-white">120</span>
-</span>
-<div class="flex items-center gap-1">
-<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 disabled:opacity-50 transition-colors" disabled="">
-<span class="material-symbols-outlined text-[20px]">chevron_left</span>
-</button>
-<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-<!-- Hidden Modal Structure (for visual completeness if enabled) -->
-<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm" id="modal">
-<div class="bg-white dark:bg-[#1a202c] rounded-xl shadow-2xl w-full max-w-lg overflow-hidden">
-<div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
-<h3 class="text-lg font-bold text-slate-900 dark:text-white">Add New Student</h3>
-<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="p-6 grid grid-cols-2 gap-4">
-<div class="col-span-2">
-<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name (English)</label>
-<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm p-2.5 focus:ring-primary focus:border-primary" type="text"/>
-</div>
-<div class="col-span-2">
-<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name (Arabic)</label>
-<input class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm p-2.5 focus:ring-primary focus:border-primary" dir="rtl" type="text"/>
-</div>
-<div>
-<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Class</label>
-<select class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm p-2.5 focus:ring-primary focus:border-primary">
-<option>Select Class</option>
-</select>
-</div>
-<div>
-<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Section</label>
-<select class="w-full rounded-lg border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm p-2.5 focus:ring-primary focus:border-primary">
-<option>Select Section</option>
-</select>
-</div>
-</div>
-<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 flex justify-end gap-3">
-<button class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors">Cancel</button>
-<button class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-blue-700 rounded-lg transition-colors">Save Student</button>
-</div>
-</div>
-</div>
-</body></html>
+  </head>
+  <body
+    class="font-display bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark overflow-hidden"
+  >
+    <div class="flex h-screen w-full relative">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 h-full flex flex-col justify-between bg-surface-light dark:bg-surface-dark border-r border-border-light dark:border-border-dark hidden md:flex shrink-0 z-10"
+      >
+        <div class="flex flex-col gap-6 p-6">
+          <div class="flex flex-col gap-1">
+            <h1
+              class="text-text-main-light dark:text-white text-lg font-bold leading-normal tracking-tight"
+            >
+              EduTrack Pro
+            </h1>
+            <p
+              class="text-text-secondary-light dark:text-text-secondary-dark text-xs font-medium uppercase tracking-wider"
+            >
+              Admin Portal
+            </p>
+          </div>
+          <nav class="flex flex-col gap-2">
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-xl group-hover:text-primary transition-colors"
+                >dashboard</span
+              >
+              <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-primary dark:bg-primary/20"
+              href="#"
+            >
+              <span class="material-symbols-fill text-xl">school</span>
+              <span class="text-sm font-medium">Students</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-xl group-hover:text-primary transition-colors"
+                >group</span
+              >
+              <span class="text-sm font-medium">Teachers</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-xl group-hover:text-primary transition-colors"
+                >menu_book</span
+              >
+              <span class="text-sm font-medium">Classes</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-xl group-hover:text-primary transition-colors"
+                >calendar_month</span
+              >
+              <span class="text-sm font-medium">Schedule</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-xl group-hover:text-primary transition-colors"
+                >settings</span
+              >
+              <span class="text-sm font-medium">Settings</span>
+            </a>
+          </nav>
+        </div>
+        <div class="p-4 border-t border-border-light dark:border-border-dark">
+          <div
+            class="flex items-center gap-3 p-2 rounded-lg hover:bg-background-light dark:hover:bg-background-dark/50 cursor-pointer"
+          >
+            <div
+              class="h-10 w-10 rounded-full bg-cover bg-center bg-no-repeat"
+              data-alt="User avatar placeholder"
+              style="
+                background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4oehQqInzy1vUO-e4SuXI19TwbXmXxYBiqmCOPqCHgI-xMLyiYix9CaYSE1n6uqEO7yrrxqHTiQrJcsw6akeVfPOh2aIa15iJAp0u9pWWtgh90Jpe3Kgw8g5scKEuDqFNuajTvVBnx1ayGAqmxeD0jloYxNveZfFwRYdQ0f6CS7ezzyR_j-I5g5Zo_jW3o8NLAAFc4Rru3d3juQ1autq2rHnqEH2rrXmY-PWmBCHxnYP98JdL-bOL3Fhuy7A1RgWBo4lckpWyBqw');
+              "
+            ></div>
+            <div class="flex flex-col">
+              <p
+                class="text-sm font-semibold text-text-main-light dark:text-white"
+              >
+                Admin User
+              </p>
+              <p
+                class="text-xs text-text-secondary-light dark:text-text-secondary-dark"
+              >
+                admin@edutrack.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- Main Content Area -->
+      <main
+        class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative"
+      >
+        <!-- Top Navbar -->
+        <header
+          class="h-16 flex items-center justify-between px-6 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark shrink-0 z-0"
+        >
+          <div class="flex items-center gap-4">
+            <button
+              class="md:hidden p-2 text-text-secondary-light hover:text-primary"
+            >
+              <span class="material-symbols-outlined">menu</span>
+            </button>
+            <h2 class="text-lg font-bold text-text-main-light dark:text-white">
+              Students Management
+            </h2>
+          </div>
+          <div class="flex items-center gap-4">
+            <!-- Search Bar -->
+            <div
+              class="hidden md:flex items-center bg-background-light dark:bg-background-dark rounded-lg px-3 py-2 border border-border-light dark:border-border-dark focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all w-64"
+            >
+              <span
+                class="material-symbols-outlined text-text-secondary-light text-[20px]"
+                >search</span
+              >
+              <input
+                class="bg-transparent border-none text-sm w-full focus:ring-0 text-text-main-light dark:text-white placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark ml-2"
+                placeholder="Search students..."
+                type="text"
+              />
+            </div>
+            <button
+              class="p-2 rounded-full hover:bg-background-light dark:hover:bg-background-dark/50 text-text-secondary-light dark:text-text-secondary-dark relative"
+            >
+              <span class="material-symbols-outlined">notifications</span>
+              <span
+                class="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border-2 border-surface-light dark:border-surface-dark"
+              ></span>
+            </button>
+          </div>
+        </header>
+        <!-- Page Content (Blurred Background for effect) -->
+        <div class="flex-1 overflow-auto p-6 md:p-10 relative">
+          <!-- Header Actions -->
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 opacity-40 blur-[1px] pointer-events-none select-none"
+          >
+            <div class="flex flex-col">
+              <h3
+                class="text-2xl font-bold text-text-main-light dark:text-white"
+              >
+                All Students
+              </h3>
+              <p
+                class="text-text-secondary-light dark:text-text-secondary-dark text-sm mt-1"
+              >
+                Manage student records, admissions, and class assignments.
+              </p>
+            </div>
+            <button
+              class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded-lg shadow-sm transition-all font-medium"
+            >
+              <span class="material-symbols-outlined text-[20px]">add</span>
+              <span>Add New Student</span>
+            </button>
+          </div>
+          <!-- Placeholder Table (Blurred) -->
+          <div
+            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm overflow-hidden opacity-40 blur-[1px] pointer-events-none select-none h-[600px]"
+          >
+            <div
+              class="p-6 border-b border-border-light dark:border-border-dark flex items-center justify-between"
+            >
+              <div
+                class="h-6 w-32 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
+              ></div>
+              <div
+                class="h-8 w-24 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
+              ></div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div
+                class="h-10 w-full bg-gray-100 dark:bg-gray-800 rounded animate-pulse"
+              ></div>
+              <div
+                class="h-10 w-full bg-gray-100 dark:bg-gray-800 rounded animate-pulse"
+              ></div>
+              <div
+                class="h-10 w-full bg-gray-100 dark:bg-gray-800 rounded animate-pulse"
+              ></div>
+              <div
+                class="h-10 w-full bg-gray-100 dark:bg-gray-800 rounded animate-pulse"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Overlay -->
+        <div
+          class="absolute inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+        >
+          <!-- Backdrop -->
+          <div
+            class="absolute inset-0 bg-background-dark/30 backdrop-blur-sm transition-opacity"
+          ></div>
+          <!-- Modal Card -->
+          <div
+            class="relative w-full max-w-3xl bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl border border-border-light dark:border-border-dark flex flex-col max-h-[90vh] overflow-hidden transform transition-all scale-100 opacity-100"
+          >
+            <!-- Modal Header -->
+            <div
+              class="flex items-center justify-between px-6 py-5 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark"
+            >
+              <div>
+                <h2
+                  class="text-xl font-bold text-text-main-light dark:text-white"
+                >
+                  Add New Student
+                </h2>
+                <p
+                  class="text-sm text-text-secondary-light dark:text-text-secondary-dark mt-0.5"
+                >
+                  Enter the student's personal and academic information.
+                </p>
+              </div>
+              <button
+                aria-label="Close modal"
+                class="p-2 rounded-full hover:bg-background-light dark:hover:bg-background-dark/50 text-text-secondary-light dark:text-text-secondary-dark transition-colors"
+              >
+                <span class="material-symbols-outlined">close</span>
+              </button>
+            </div>
+            <!-- Modal Body (Scrollable) -->
+            <div class="overflow-y-auto p-6 md:p-8">
+              <form class="flex flex-col gap-8">
+                <!-- Personal Info Section -->
+                <div class="flex flex-col gap-5">
+                  <div
+                    class="flex items-center gap-2 pb-2 border-b border-border-light dark:border-border-dark/50"
+                  >
+                    <span
+                      class="material-symbols-outlined text-primary text-[20px]"
+                      >person</span
+                    >
+                    <h3
+                      class="text-sm font-semibold uppercase tracking-wider text-text-secondary-light dark:text-text-secondary-dark"
+                    >
+                      Personal Information
+                    </h3>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- English Name (LTR) -->
+                    <div class="flex flex-col gap-2">
+                      <label
+                        class="text-sm font-medium text-text-main-light dark:text-gray-300"
+                        for="english-name"
+                        >English Name <span class="text-red-500">*</span></label
+                      >
+                      <div class="relative">
+                        <input
+                          class="w-full h-11 px-4 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-text-main-light dark:text-white placeholder:text-text-secondary-light/70 text-base"
+                          id="english-name"
+                          placeholder="e.g. John Doe"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <!-- Arabic Name (RTL) -->
+                    <div class="flex flex-col gap-2">
+                      <label
+                        class="text-sm font-medium text-text-main-light dark:text-gray-300 flex justify-end"
+                        for="arabic-name"
+                        >الاسم بالعربية
+                        <span class="text-red-500 mr-1">*</span></label
+                      >
+                      <div class="relative">
+                        <input
+                          class="w-full h-11 px-4 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-text-main-light dark:text-white placeholder:text-text-secondary-light/70 text-base"
+                          dir="rtl"
+                          id="arabic-name"
+                          placeholder="مثال: محمد علي"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Academic Info Section -->
+                <div class="flex flex-col gap-5">
+                  <div
+                    class="flex items-center gap-2 pb-2 border-b border-border-light dark:border-border-dark/50"
+                  >
+                    <span
+                      class="material-symbols-outlined text-primary text-[20px]"
+                      >school</span
+                    >
+                    <h3
+                      class="text-sm font-semibold uppercase tracking-wider text-text-secondary-light dark:text-text-secondary-dark"
+                    >
+                      Academic Details
+                    </h3>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Admission Number -->
+                    <div class="flex flex-col gap-2">
+                      <label
+                        class="text-sm font-medium text-text-main-light dark:text-gray-300"
+                        for="admission-number"
+                        >Admission Number</label
+                      >
+                      <div class="relative group">
+                        <span
+                          class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark group-focus-within:text-primary transition-colors material-symbols-outlined text-[20px]"
+                          >badge</span
+                        >
+                        <input
+                          class="w-full h-11 pl-10 pr-4 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-text-main-light dark:text-white placeholder:text-text-secondary-light/70 text-base font-mono"
+                          id="admission-number"
+                          placeholder="2024-0001"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <!-- Class Select -->
+                    <div class="flex flex-col gap-2">
+                      <label
+                        class="text-sm font-medium text-text-main-light dark:text-gray-300"
+                        for="class-select"
+                        >Class <span class="text-red-500">*</span></label
+                      >
+                      <div class="relative">
+                        <select
+                          class="w-full h-11 px-4 pr-10 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-text-main-light dark:text-white text-base appearance-none cursor-pointer"
+                          id="class-select"
+                        >
+                          <option disabled="" selected="" value="">
+                            Select Class
+                          </option>
+                          <option value="1">Grade 1</option>
+                          <option value="2">Grade 2</option>
+                          <option value="3">Grade 3</option>
+                          <option value="4">Grade 4</option>
+                          <option value="5">Grade 5</option>
+                          <option value="6">Grade 6</option>
+                        </select>
+                        <span
+                          class="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark pointer-events-none material-symbols-outlined"
+                          >expand_more</span>
+                      </div>
+                    </div>
+                    <!-- Section Select -->
+                    <div class="flex flex-col gap-2">
+                      <label
+                        class="text-sm font-medium text-text-main-light dark:text-gray-300"
+                        for="section-select"
+                        >Section <span class="text-red-500">*</span></label
+                      >
+                      <div class="relative">
+                        <select
+                          class="w-full h-11 px-4 pr-10 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-text-main-light dark:text-white text-base appearance-none cursor-pointer"
+                          id="section-select"
+                        >
+                          <option disabled="" selected="" value="">
+                            Select Section
+                          </option>
+                          <option value="A">Section A</option>
+                          <option value="B">Section B</option>
+                          <option value="C">Section C</option>
+                          <option value="D">Section D</option>
+                        </select>
+                        <span
+                          class="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark pointer-events-none material-symbols-outlined"
+                          >expand_more</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- Modal Footer -->
+            <div
+              class="px-6 py-4 bg-background-light dark:bg-background-dark/50 border-t border-border-light dark:border-border-dark flex items-center justify-end gap-3"
+            >
+              <button
+                class="px-5 py-2.5 rounded-lg border border-border-light dark:border-border-dark text-text-main-light dark:text-white bg-surface-light dark:bg-surface-dark hover:bg-background-light dark:hover:bg-background-dark/50 font-medium transition-colors focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                class="px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium shadow-md hover:shadow-lg transition-all focus:ring-2 focus:ring-primary/40 flex items-center gap-2"
+                type="button"
+              >
+                <span class="material-symbols-outlined text-[20px]">save</span>
+                Save Student
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

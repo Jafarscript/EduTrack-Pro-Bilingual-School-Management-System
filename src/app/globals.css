@@ -4,12 +4,15 @@
 
 @theme {
   --color-primary: #135bec;
+  --color--primary-hover: #1d4ed8;
   --color-background-light: #f6f6f8;
   --color-background-dark: #101622;
   --color-surface-light: #ffffff;
   --color-surface-dark: #1a2230;
   --color-text-main: #111827;
   --color-text-secondary: #6b7280;
+  --color-text-secondary-light: #4c669a;
+  --color-text-secondary-dark: #9ca3af;
   --font-family-sans: 'Inter', sans-serif;
   --radius-base: 0.25rem;
   --radius-lg: 0.5rem;
