@@ -19,7 +19,7 @@ export default function StudentsPage() {
 
   // Filter Logic
   const filteredStudents = mockStudents.filter((s) =>
-    (s.nameArabic + s.nameEnglish).toLowerCase().includes(search.toLowerCase())
+    (s.nameAr + s.nameEn).toLowerCase().includes(search.toLowerCase())
   );
 
   // --- Handlers ---

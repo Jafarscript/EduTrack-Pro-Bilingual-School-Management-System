@@ -45,10 +45,10 @@ export default function StudentsTable({ students, onEdit, onDelete }: StudentsTa
                   className="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
                 >
                   <td className="px-6 py-4 font-medium text-slate-900 dark:text-white text-center">
-                    {student.nameArabic}
+                    {student.nameAr}
                   </td>
                   <td className="px-6 py-4 font-medium text-slate-900 dark:text-white text-center">
-                    {student.nameEnglish}
+                    {student.nameEn}
                   </td>
                   <td className="px-6 py-4 font-medium text-slate-900 dark:text-white text-center">
                     {student.className}
